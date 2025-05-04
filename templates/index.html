@@ -2,18 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Send SMS</title>
+    <title>Fire Alert SMS</title>
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
     <div class="container">
-        <h2>Send Test SMS</h2>
-        <form method="POST" action="https://sms-server-sjhr.onrender.com">
-            <label for="number">Recipient Number:</label>
-            <input type="text" id="number" name="number" value="+8801725692402" required>
+        <h2>Fire Alert Notification</h2>
+        <form method="POST" action="https://sms-server-sjhr.onrender.com/">
+            <label for="location">Select Section:</label>
+            <select id="location" name="location" required>
+                <option value="CMP (Forming)">CMP (Forming)</option>
+                <option value="CMP (Welding)">CMP (Welding)</option>
+                <option value="CMP (Quality)">CMP (Quality)</option>
+                <option value="CMP (Painting)">CMP (Painting)</option>
+                <option value="CMP (Finishing)">CMP (Finishing)</option>
+                <option value="ADMIN Building">ADMIN Building</option>
+                <option value="Validation">Validation</option>
+                <option value="AUTO TANK">AUTO TANK</option>
+            </select>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required>This is a demo message from your PPE system.</textarea>
+            <p><strong>Message Preview:</strong> Fire Alert at <span id="preview">CMP (Forming)</span>!</p>
 
             <button type="submit">Send SMS</button>
         </form>
@@ -24,5 +32,13 @@
             </div>
         {% endif %}
     </div>
+
+    <script>
+        const dropdown = document.getElementById('location');
+        const preview = document.getElementById('preview');
+        dropdown.addEventListener('change', function () {
+            preview.textContent = this.value;
+        });
+    </script>
 </body>
 </html>

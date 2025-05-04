@@ -13,25 +13,25 @@ SENDER_ID = "8809617625650"
 def index():
     status = None
     if request.method == "POST":
-        number = request.form.get("number")
-        message = request.form.get("message")
+        location = request.form.get("location")
+        number = "+8801725692402"
+        message = f"Fire Alert at {location}!"
 
-        if number and message:
-            payload = {
-                "api_key": API_KEY,
-                "senderid": SENDER_ID,
-                "number": number,
-                "message": message
-            }
+        payload = {
+            "api_key": API_KEY,
+            "senderid": SENDER_ID,
+            "number": number,
+            "message": message
+        }
 
-            try:
-                response = requests.post(API_URL, data=payload, timeout=10)
-                status = response.text
-            except requests.exceptions.RequestException as e:
-                status = f"Request failed: {e}"
+        try:
+            response = requests.post(API_URL, data=payload, timeout=10)
+            status = response.text
+        except requests.exceptions.RequestException as e:
+            status = f"Request failed: {e}"
 
     return render_template("index.html", status=status)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Render requires binding to the port it provides
+    port = int(os.environ.get("PORT", 5000))
     app.run(debug=True, host="0.0.0.0", port=port)

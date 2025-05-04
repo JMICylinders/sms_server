@@ -1,29 +1,37 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 import requests
+import os
 
 app = Flask(__name__)
 
+# SMS API configuration
 API_URL = "http://bulksmsbd.net/api/smsapi"
 API_KEY = "t6qElhvPR1nyZ8prIC0C"
 SENDER_ID = "8809617625650"
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    status = None
     if request.method == "POST":
-        number = request.form["number"]
-        message = request.form["message"]
+        number = request.form.get("number")
+        message = request.form.get("message")
 
-        payload = {
-            "api_key": API_KEY,
-            "senderid": SENDER_ID,
-            "number": number,
-            "message": message
-        }
+        if number and message:
+            payload = {
+                "api_key": API_KEY,
+                "senderid": SENDER_ID,
+                "number": number,
+                "message": message
+            }
 
-        response = requests.post(API_URL, data=payload)
-        return render_template("index.html", status=response.text)
+            try:
+                response = requests.post(API_URL, data=payload, timeout=10)
+                status = response.text
+            except requests.exceptions.RequestException as e:
+                status = f"Request failed: {e}"
 
-    return render_template("index.html", status=None)
+    return render_template("index.html", status=status)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Render requires binding to the port it provides
+    app.run(debug=True, host="0.0.0.0", port=port)

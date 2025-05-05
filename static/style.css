@@ -16,7 +16,8 @@ body {
     width: 100%;
     max-width: 450px;
     box-sizing: border-box;
-    overflow: hidden; /* Prevent overflow */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 h2 {
@@ -45,8 +46,8 @@ textarea {
 
 .message-preview,
 .status {
-    background-color: #fff7e6; /* For .status, override in HTML or use separate class */
-    border: 1px solid #ffc107; /* For .status, override if needed */
+    background-color: #fff7e6;
+    border: 1px solid #ffc107;
     padding: 12px;
     border-radius: 6px;
     margin-top: 10px;
@@ -57,7 +58,6 @@ textarea {
     overflow-wrap: break-word;
     box-sizing: border-box;
     max-width: 100%;
-    overflow: hidden;
 }
 
 .status {

@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Fire Alert SMS</title>
     <link rel="stylesheet" href="../static/style.css" />
 </head>
 <body>
     <div class="container">
         <h2>Fire Alert Notification</h2>
-        <form method="POST" action="https://sms-server-sjhr.onrender.com/">
+
+        <!-- Predefined Message Form -->
+        <form method="POST" action="/">
             <label for="location">Select Section:</label>
             <select id="location" name="location" required>
                 <option value="CMP (Forming)">CMP (Forming)</option>
@@ -22,32 +24,43 @@
                 <option value="AUTO TANK">AUTO TANK</option>
             </select>
 
-            <p><strong>Message Preview:</strong></p>
-            <div class="message-preview" id="previewBox">
-                ⚠️ FIRE ALERT at <span id="previewLocation">CMP (Forming)</span>!<br /><br />
-                Evacuate the area IMMEDIATELY.<br />
-                Follow the nearest emergency exit signs and report to the assembly point.<br />
-                Do NOT use elevators.<br />
-                Stay calm and assist others if possible.<br /><br />
-                - Safety Team
-            </div>
+            <p><strong>Preview:</strong></p>
+            <pre class="preview" id="predefinedMessagePreview">
+⚠️ FIRE ALERT at CMP (Forming)!
 
-            <button type="submit">Send SMS</button>
+Evacuate the area IMMEDIATELY.
+Follow the nearest emergency exit signs and report to the assembly point.
+Do NOT use elevators.
+Stay calm and assist others if possible.
+
+🚨 Emergency Response Team: Take Immediate Action.
+            </pre>
+
+            <button type="submit" name="predefined">Send Predefined SMS</button>
+        </form>
+
+        <hr style="margin: 30px 0;"/>
+
+        <!-- Custom Message Form -->
+        <form method="POST" action="/">
+            <label for="custom_message">Send Custom Message:</label>
+            <textarea name="custom_message" rows="4" placeholder="Type your message here..." required></textarea>
+            <button type="submit" name="custom">Send Custom SMS</button>
         </form>
 
         {% if status %}
-            <div class="status">
-                <strong>Response:</strong> {{ status }}
-            </div>
+        <div class="status">
+            <strong>Response:</strong> {{ status }}
+        </div>
         {% endif %}
     </div>
 
     <script>
         const dropdown = document.getElementById('location');
-        const previewLocation = document.getElementById('previewLocation');
+        const preview = document.getElementById('predefinedMessagePreview');
 
         dropdown.addEventListener('change', function () {
-            previewLocation.textContent = this.value;
+            preview.textContent = `⚠️ FIRE ALERT at ${this.value}!\n\nEvacuate the area IMMEDIATELY.\nFollow the nearest emergency exit signs and report to the assembly point.\nDo NOT use elevators.\nStay calm and assist others if possible.\n\n🚨 Emergency Response Team: Take Immediate Action.`;
         });
     </script>
 </body>

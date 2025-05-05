@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Alert SMS</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Fire Alert Notification</h2>
+        <form method="POST" action="https://sms-server-sjhr.onrender.com/">
+            <label for="location">Select Section:</label>
+            <select id="location" name="location" required>
+                <option value="CMP (Forming)">CMP (Forming)</option>
+                <option value="CMP (Welding)">CMP (Welding)</option>
+                <option value="CMP (Quality)">CMP (Quality)</option>
+                <option value="CMP (Painting)">CMP (Painting)</option>
+                <option value="CMP (Finishing)">CMP (Finishing)</option>
+                <option value="ADMIN Building">ADMIN Building</option>
+                <option value="Validation">Validation</option>
+                <option value="AUTO TANK">AUTO TANK</option>
+            </select>
+
+            <p><strong>Message Preview:</strong> Fire Alert at <span id="preview">CMP (Forming)</span>!</p>
+
+            <button type="submit">Send SMS</button>
+        </form>
+
+        {% if status %}
+            <div class="status">
+                <strong>Response:</strong> {{ status }}
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        const dropdown = document.getElementById('location');
+        const preview = document.getElementById('preview');
+        dropdown.addEventListener('change', function () {
+            preview.textContent = this.value;
+        });
+    </script>
+</body>
+</html>

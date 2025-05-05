@@ -4,19 +4,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
     padding: 20px;
-    box-sizing: border-box;
+    min-height: 100vh;
 }
 
 .container {
     background-color: #fff;
-    padding: 20px;
+    padding: 20px 25px;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
     box-sizing: border-box;
 }
 
@@ -24,30 +22,38 @@ h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
-    font-size: 22px;
 }
 
 form label {
     display: block;
     margin-top: 10px;
     color: #555;
-    font-size: 14px;
 }
 
+select,
 input[type="text"],
-textarea,
-select {
+textarea {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
     border-radius: 6px;
     border: 1px solid #ccc;
     font-size: 14px;
-    box-sizing: border-box;
+}
+
+.message-preview {
+    background-color: #fff7e6;
+    border: 1px solid #ffc107;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+    white-space: pre-line;
 }
 
 button {
-    margin-top: 15px;
+    margin-top: 20px;
     width: 100%;
     padding: 12px;
     background-color: #2d7b3d;
@@ -68,4 +74,15 @@ button:hover {
     padding: 10px;
     border-left: 4px solid #2d7b3d;
     font-size: 14px;
+    color: #2d7b3d;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px 20px;
+    }
 }

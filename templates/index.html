@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fire Alert SMS</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/style.css" />
 </head>
 <body>
     <div class="container">
@@ -22,7 +22,15 @@
                 <option value="AUTO TANK">AUTO TANK</option>
             </select>
 
-            <p><strong>Message Preview:</strong> Fire Alert at <span id="preview">CMP (Forming)</span>!</p>
+            <p><strong>Message Preview:</strong></p>
+            <div class="message-preview" id="previewBox">
+                ⚠️ FIRE ALERT at <span id="previewLocation">CMP (Forming)</span>!<br /><br />
+                Evacuate the area IMMEDIATELY.<br />
+                Follow the nearest emergency exit signs and report to the assembly point.<br />
+                Do NOT use elevators.<br />
+                Stay calm and assist others if possible.<br /><br />
+                - Safety Team
+            </div>
 
             <button type="submit">Send SMS</button>
         </form>
@@ -36,9 +44,10 @@
 
     <script>
         const dropdown = document.getElementById('location');
-        const preview = document.getElementById('preview');
+        const previewLocation = document.getElementById('previewLocation');
+
         dropdown.addEventListener('change', function () {
-            preview.textContent = this.value;
+            previewLocation.textContent = this.value;
         });
     </script>
 </body>

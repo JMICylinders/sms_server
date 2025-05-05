@@ -15,7 +15,15 @@ def index():
     if request.method == "POST":
         location = request.form.get("location")
         number = "+8801725692402,+8801324436107,+8801332549219,+8801777742732"
-        message = f"Fire Alert at {location}!"
+        message = (
+                    f"⚠️ FIRE ALERT at {location}!\n\n"
+                    "Evacuate the area IMMEDIATELY.\n"
+                    "Follow the nearest emergency exit signs and report to the assembly point.\n"
+                    "Do NOT use elevators.\n"
+                    "Stay calm and assist others if possible.\n\n"
+                    "🚨 Emergency response team must take action NOW.\n\n"
+                    "- Safety Team")
+
 
         payload = {
             "api_key": API_KEY,

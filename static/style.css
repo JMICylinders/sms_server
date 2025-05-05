@@ -16,6 +16,8 @@ body {
     width: 100%;
     max-width: 450px;
     box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 h2 {
@@ -75,6 +77,7 @@ button:hover {
     border-left: 4px solid #2d7b3d;
     font-size: 14px;
     color: #2d7b3d;
+    max-width: 100%;
 }
 
 @media (max-width: 480px) {

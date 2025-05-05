@@ -14,7 +14,7 @@ def index():
     status = None
     if request.method == "POST":
         location = request.form.get("location")
-        number = "+8801725692402"
+        number = "+8801725692402,+8801325095925"
         message = f"Fire Alert at {location}!"
 
         payload = {

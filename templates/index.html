@@ -11,14 +11,14 @@
         <h2>Emergency Alert Notification</h2>
 
         <!-- Predefined Message Form -->
-                <label for="driller">Select Assistant Driller:</label>
-        <select name="driller" id="driller" required>
-          <option value="" disabled selected>Select...</option>
-          {% for driller in drillers %}
-            <option value="{{ driller }}">{{ driller }}</option>
-          {% endfor %}
-        </select>
-
+        <form method="POST" action="/">
+            <label for="driller">Select Assistant Driller:</label>
+            <select id="driller" name="driller" required>
+                <option value="" disabled selected>Select...</option>
+                {% for name in drillers %}
+                    <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
 
             <p><strong>Preview:</strong></p>
             <pre class="message-preview" id="predefinedMessagePreview">
@@ -39,14 +39,7 @@ Stay calm and assist others if possible.
 
         <!-- Custom Message Form -->
         <form method="POST" action="/">
-            <label for="driller">Select Assistant Driller:</label>
-            <select id="driller" name="driller" required>
-                {% for name in drillers %}
-                <option value="{{ name }}">{{ name }}</option>
-                {% endfor %}
-            </select>
-
-            <label for="custom_message">Send Custom Message:</label>
+            <label for="custom_message">Send Custom Message to Selected Driller's Crew:</label>
             <textarea name="custom_message" rows="4" placeholder="Type your message here..." required></textarea>
             <button type="submit" name="custom">Send Custom SMS</button>
         </form>
@@ -59,15 +52,12 @@ Stay calm and assist others if possible.
     </div>
 
     <script>
-        const dropdowns = document.querySelectorAll('select[name="driller"]');
+        const dropdown = document.getElementById('driller');
         const preview = document.getElementById('predefinedMessagePreview');
 
-        dropdowns.forEach(dropdown => {
-            dropdown.addEventListener('change', function () {
-                preview.textContent = `⚠️ EMERGENCY ALERT for crew under Assistant Driller ${this.value}!\n\nEvacuate the area IMMEDIATELY.\nFollow the nearest emergency exit signs and report to the assembly point.\nDo NOT use elevators.\nStay calm and assist others if possible.\n\n🚨 Emergency Response Team: Take Immediate Action.`;
-            });
+        dropdown.addEventListener('change', function () {
+            preview.textContent = `⚠️ EMERGENCY ALERT for crew under Assistant Driller ${this.value}!\n\nEvacuate the area IMMEDIATELY.\nFollow the nearest emergency exit signs and report to the assembly point.\nDo NOT use elevators.\nStay calm and assist others if possible.\n\n🚨 Emergency Response Team: Take Immediate Action.`;
         });
     </script>
 </body>
 </html>
-

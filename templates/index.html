@@ -3,37 +3,32 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Fire Alert SMS</title>
+    <title>Emergency Alert Notification</title>
     <link rel="stylesheet" href="../static/style.css" />
 </head>
 <body>
     <div class="container">
-        <h2>Fire Alert Notification</h2>
+        <h2>Emergency Alert Notification</h2>
 
         <!-- Predefined Message Form -->
-        <form method="POST" action="https://sms-server-sjhr.onrender.com/">
-            <label for="location">Select Section:</label>
-            <select id="location" name="location" required>
-                <option value="CMP (Forming)">CMP (Forming)</option>
-                <option value="CMP (Welding)">CMP (Welding)</option>
-                <option value="CMP (Quality)">CMP (Quality)</option>
-                <option value="CMP (Painting)">CMP (Painting)</option>
-                <option value="CMP (Finishing)">CMP (Finishing)</option>
-                <option value="ADMIN Building">ADMIN Building</option>
-                <option value="Validation">Validation</option>
-                <option value="AUTO TANK">AUTO TANK</option>
+        <form method="POST" action="/">
+            <label for="driller">Select Assistant Driller:</label>
+            <select id="driller" name="driller" required>
+                {% for name in drillers %}
+                <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
             </select>
 
             <p><strong>Preview:</strong></p>
             <pre class="message-preview" id="predefinedMessagePreview">
-⚠️ FIRE ALERT at CMP (Forming)!
+⚠️ EMERGENCY ALERT for crew under Assistant Driller Kuddus!
 
 Evacuate the area IMMEDIATELY.
 Follow the nearest emergency exit signs and report to the assembly point.
 Do NOT use elevators.
 Stay calm and assist others if possible.
 
-
+🚨 Emergency Response Team: Take Immediate Action.
             </pre>
 
             <button type="submit" name="predefined">Send Predefined SMS</button>
@@ -43,6 +38,13 @@ Stay calm and assist others if possible.
 
         <!-- Custom Message Form -->
         <form method="POST" action="/">
+            <label for="driller">Select Assistant Driller:</label>
+            <select id="driller" name="driller" required>
+                {% for name in drillers %}
+                <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+
             <label for="custom_message">Send Custom Message:</label>
             <textarea name="custom_message" rows="4" placeholder="Type your message here..." required></textarea>
             <button type="submit" name="custom">Send Custom SMS</button>
@@ -56,13 +58,14 @@ Stay calm and assist others if possible.
     </div>
 
     <script>
-        const dropdown = document.getElementById('location');
+        const dropdowns = document.querySelectorAll('select[name="driller"]');
         const preview = document.getElementById('predefinedMessagePreview');
 
-        dropdown.addEventListener('change', function () {
-            preview.textContent = `⚠️ FIRE ALERT at ${this.value}!\n\nEvacuate the area IMMEDIATELY.\nFollow the nearest emergency exit signs and report to the assembly point.\nDo NOT use elevators.\nStay calm and assist others if possible.\n\n🚨 Emergency Response Team: Take Immediate Action.`;
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('change', function () {
+                preview.textContent = `⚠️ EMERGENCY ALERT for crew under Assistant Driller ${this.value}!\n\nEvacuate the area IMMEDIATELY.\nFollow the nearest emergency exit signs and report to the assembly point.\nDo NOT use elevators.\nStay calm and assist others if possible.\n\n🚨 Emergency Response Team: Take Immediate Action.`;
+            });
         });
     </script>
 </body>
 </html>
-

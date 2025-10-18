@@ -14,7 +14,7 @@ SENDER_ID = os.getenv("SENDER_ID")
 ASSISTANT_DRILLERS = {
     "Kuddus": ["+8801725692402", ],
     "Folik": ["+8801569132204", ],
-    "Rokon": ["+88015XXXXXXX", "+88017XXXXXXX"]
+    "Rokon": ["+8801878287485",]
 }
 
 @app.route("/", methods=["GET", "POST"])
@@ -63,4 +63,5 @@ def index():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=True, host="0.0.0.0", port=port)
+
 

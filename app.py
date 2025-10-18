@@ -8,7 +8,7 @@ app = Flask(__name__)
 API_URL = "http://bulksmsbd.net/api/smsapi"
 API_KEY = "t6qElhvPR1nyZ8prIC0C"
 SENDER_ID = "8809617625650"
-RECIPIENTS = "+8801725692402,+8801830495936,+8801332549210,+8801313055747,+8801777742647,+8801313055741,+8801796705822,+8801871261324,+8801775575197,+8801886911535,+8801610225951,+8801964959091,+8801787450043,+8801877526952,+8801314867227"
+RECIPIENTS = "+8801725692402"
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -38,3 +38,4 @@ def index():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=True, host="0.0.0.0", port=port)
+

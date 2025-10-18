@@ -12,8 +12,8 @@ SENDER_ID = os.getenv("SENDER_ID")
 
 # Assistant Drillers and their crew phone groups (placeholders)
 ASSISTANT_DRILLERS = {
-    "Kuddus": ["+88017XXXXXXX", "+88018XXXXXXX"],
-    "Folik": ["+88019XXXXXXX", "+88016XXXXXXX"],
+    "Kuddus": ["+8801725692402", ],
+    "Folik": ["+8801569132204", ],
     "Rokon": ["+88015XXXXXXX", "+88017XXXXXXX"]
 }
 
@@ -63,3 +63,4 @@ def index():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=True, host="0.0.0.0", port=port)
+

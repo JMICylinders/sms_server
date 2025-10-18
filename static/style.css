@@ -16,14 +16,12 @@ body {
     width: 100%;
     max-width: 450px;
     box-sizing: border-box;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
 }
 
 h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #333;
+    color: #b02a37; /* dark red for emergency */
 }
 
 form label {
@@ -33,7 +31,6 @@ form label {
 }
 
 select,
-input[type="text"],
 textarea {
     width: 100%;
     padding: 10px;
@@ -55,9 +52,6 @@ textarea {
     color: #333;
     white-space: pre-wrap;
     word-break: break-word;
-    overflow-wrap: break-word;
-    box-sizing: border-box;
-    max-width: 100%;
 }
 
 .status {
@@ -70,7 +64,7 @@ button {
     margin-top: 20px;
     width: 100%;
     padding: 12px;
-    background-color: #2d7b3d;
+    background-color: #b02a37;
     color: white;
     border: none;
     border-radius: 8px;
@@ -79,7 +73,7 @@ button {
 }
 
 button:hover {
-    background-color: #256633;
+    background-color: #96242f;
 }
 
 @media (max-width: 480px) {

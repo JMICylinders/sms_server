@@ -11,13 +11,14 @@
         <h2>Emergency Alert Notification</h2>
 
         <!-- Predefined Message Form -->
-        <form method="POST" action="/">
-            <label for="driller">Select Assistant Driller:</label>
-            <select id="driller" name="driller" required>
-                {% for name in drillers %}
-                <option value="{{ name }}">{{ name }}</option>
-                {% endfor %}
-            </select>
+                <label for="driller">Select Assistant Driller:</label>
+        <select name="driller" id="driller" required>
+          <option value="" disabled selected>Select...</option>
+          {% for driller in drillers %}
+            <option value="{{ driller }}">{{ driller }}</option>
+          {% endfor %}
+        </select>
+
 
             <p><strong>Preview:</strong></p>
             <pre class="message-preview" id="predefinedMessagePreview">
@@ -69,3 +70,4 @@ Stay calm and assist others if possible.
     </script>
 </body>
 </html>
+
